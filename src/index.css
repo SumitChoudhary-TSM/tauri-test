@@ -1,1 +1,119 @@
 @import 'tailwindcss';
+
+:root {
+  --background: oklch(0.97 0 0);
+  --foreground: oklch(0.2 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.2 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.2 0 0);
+  --primary: oklch(0.35 0.15 220);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.95 0.02 220);
+  --secondary-foreground: oklch(0.2 0 0);
+  --muted: oklch(0.93 0 0);
+  --muted-foreground: oklch(0.5 0 0);
+  --accent: oklch(0.15 0.18 70);
+  --accent-foreground: oklch(0.98 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.92 0.01 220);
+  --input: oklch(0.96 0 0);
+  --ring: oklch(0.35 0.15 220);
+  --chart-1: oklch(0.35 0.15 220);
+  --chart-2: oklch(0.55 0.12 160);
+  --chart-3: oklch(0.7 0.1 85);
+  --chart-4: oklch(0.65 0.08 30);
+  --chart-5: oklch(0.45 0.14 260);
+  --radius: 0.5rem;
+  --sidebar: oklch(0.98 0 0);
+  --sidebar-foreground: oklch(0.2 0 0);
+  --sidebar-primary: oklch(0.35 0.15 220);
+  --sidebar-primary-foreground: oklch(0.98 0 0);
+  --sidebar-accent: oklch(0.93 0 0);
+  --sidebar-accent-foreground: oklch(0.2 0 0);
+  --sidebar-border: oklch(0.92 0.01 220);
+  --sidebar-ring: oklch(0.35 0.15 220);
+}
+
+/* .dark {
+    --background: oklch(0.12 0 0);
+    --foreground: oklch(0.95 0 0);
+    --card: oklch(0.15 0 0);
+    --card-foreground: oklch(0.95 0 0);
+    --popover: oklch(0.15 0 0);
+    --popover-foreground: oklch(0.95 0 0);
+    --primary: oklch(0.65 0.15 220);
+    --primary-foreground: oklch(0.12 0 0);
+    --secondary: oklch(0.25 0.02 220);
+    --secondary-foreground: oklch(0.95 0 0);
+    --muted: oklch(0.25 0 0);
+    --muted-foreground: oklch(0.65 0 0);
+    --accent: oklch(0.8 0.18 70);
+    --accent-foreground: oklch(0.12 0 0);
+    --destructive: oklch(0.396 0.141 25.723);
+    --destructive-foreground: oklch(0.637 0.237 25.331);
+    --border: oklch(0.25 0.01 220);
+    --input: oklch(0.2 0 0);
+    --ring: oklch(0.65 0.15 220);
+    --chart-1: oklch(0.65 0.15 220);
+    --chart-2: oklch(0.75 0.12 160);
+    --chart-3: oklch(0.8 0.1 85);
+    --chart-4: oklch(0.7 0.08 30);
+    --chart-5: oklch(0.75 0.14 260);
+    --sidebar: oklch(0.15 0 0);
+    --sidebar-foreground: oklch(0.95 0 0);
+    --sidebar-primary: oklch(0.65 0.15 220);
+    --sidebar-primary-foreground: oklch(0.95 0 0);
+    --sidebar-accent: oklch(0.25 0 0);
+    --sidebar-accent-foreground: oklch(0.95 0 0);
+    --sidebar-border: oklch(0.25 0.01 220);
+    --sidebar-ring: oklch(0.65 0.15 220);
+  } */
+
+@theme {
+  --font-sans: 'Geist', 'Geist Fallback';
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --color-background: oklch(0.97 0 0);
+  --color-foreground: oklch(0.2 0 0);
+  --color-card: oklch(1 0 0);
+  --color-card-foreground: oklch(0.2 0 0);
+  --color-popover: oklch(1 0 0);
+  --color-popover-foreground: oklch(0.2 0 0);
+  --color-primary: oklch(0.35 0.15 220);
+  --color-primary-foreground: oklch(0.98 0 0);
+  --color-secondary: oklch(0.95 0.02 220);
+  --color-secondary-foreground: oklch(0.2 0 0);
+  --color-muted: oklch(0.93 0 0);
+  --color-muted-foreground: oklch(0.5 0 0);
+  --color-accent: oklch(0.15 0.18 70);
+  --color-accent-foreground: oklch(0.98 0 0);
+  --color-destructive: oklch(0.577 0.245 27.325);
+  --color-destructive-foreground: oklch(0.98 0 0);
+  --color-border: oklch(0.92 0.01 220);
+  --color-input: oklch(0.96 0 0);
+  --color-ring: oklch(0.35 0.15 220);
+  --color-chart-1: oklch(0.35 0.15 220);
+  --color-chart-2: oklch(0.55 0.12 160);
+  --color-chart-3: oklch(0.7 0.1 85);
+  --color-chart-4: oklch(0.65 0.08 30);
+  --color-chart-5: oklch(0.45 0.14 260);
+  --color-sidebar: oklch(0.98 0 0);
+  --color-sidebar-foreground: oklch(0.2 0 0);
+  --color-sidebar-primary: oklch(0.35 0.15 220);
+  --color-sidebar-primary-foreground: oklch(0.98 0 0);
+  --color-sidebar-accent: oklch(0.93 0 0);
+  --color-sidebar-accent-foreground: oklch(0.2 0 0);
+  --color-sidebar-border: oklch(0.92 0.01 220);
+  --color-sidebar-ring: oklch(0.35 0.15 220);
+
+  --radius-radius-sm: calc(0.5rem - 2px);
+  --radius-radius-md: 0.5rem;
+  --radius-radius-lg: calc(0.5rem + 4px);
+  --radius-radius-xl: calc(0.5rem + 8px);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
