@@ -1,5 +1,13 @@
 @import 'tailwindcss';
 
+@layer base {
+  *,
+  *::before,
+  *::after {
+    border-color: var(--color-border);
+  }
+}
+
 :root {
   --background: oklch(0.97 0 0);
   --foreground: oklch(0.2 0 0);
@@ -114,6 +122,24 @@
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+}
+
+/* Override MUI default styles to allow Tailwind utilities */
+.MuiButtonBase-root,
+.MuiInputBase-root,
+.MuiTypography-root {
+  font-family: inherit;
+}
+
+/* Ensure Tailwind utilities work on MUI components */
+.MuiButton-root {
+  text-transform: inherit;
+  box-shadow: none;
+}
+
+.MuiOutlinedInput-root {
+  background-color: inherit;
 }

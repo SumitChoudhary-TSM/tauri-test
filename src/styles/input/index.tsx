@@ -50,9 +50,9 @@ const CustomInput = React.forwardRef<HTMLInputElement, CustomInputProps>(
           onChange={onChange}
           onBlur={onBlur}
           className={cn(
-            'rounded-md bg-background text-foreground border-border',
-            '[&_input::placeholder]:text-muted-foreground',
-            'transition-all',
+            '!rounded-md !bg-background !text-foreground !border-border',
+            '[&_input::placeholder]:!text-muted-foreground',
+            '!transition-all',
             inputProps?.className,
           )}
         />
