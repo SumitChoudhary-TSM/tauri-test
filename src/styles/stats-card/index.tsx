@@ -3,7 +3,7 @@ import { Card, CardContent, Box } from '@mui/material';
 import { Description, Subheading } from '@/styles/typography';
 import { StatsCardProps } from './types';
 
-const StatsCard: React.FC<StatsCardProps> = ({ label, value, icon, color }) => {
+const StatsCard: React.FC<StatsCardProps> = ({ label, value, icon, bgColor }) => {
   const hasIcon = Boolean(icon);
 
   return (
@@ -39,10 +39,7 @@ const StatsCard: React.FC<StatsCardProps> = ({ label, value, icon, color }) => {
         </Box>
 
         {hasIcon && (
-          <Box
-            sx={{ fontSize: 32 }}
-            className={`w-12 h-12 rounded-lg bg-muted flex items-center justify-center ${color}`}
-          >
+          <Box sx={{ fontSize: 32 }} className={`w-12 h-12 rounded-lg flex items-center justify-center ${bgColor}`}>
             {icon}
           </Box>
         )}

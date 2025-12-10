@@ -1,12 +1,35 @@
+import React from 'react';
 import { IconProps } from './type';
 
-const SearchIcon: React.FC<IconProps> = ({ width = 19, height = 19, color = '#CECECE' }) => {
+const SearchIcon: React.FC<IconProps> = ({
+  width = 19,
+  height = 19,
+  color = '#CECECE',
+  fill = color,
+  className,
+  scale = 1,
+  useOverlay = false,
+  viewBox = '0 0 19 19',
+  style,
+  onClick,
+}) => {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width={width} height={height} viewBox="0 0 19 19" fill="none">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={typeof width === 'number' ? width * scale : width}
+      height={typeof height === 'number' ? height * scale : height}
+      viewBox={viewBox}
+      fill="none"
+      className={className}
+      style={style}
+      onClick={onClick}
+    >
       <path
         d="M17.5531 18.0386L11.2531 11.7386C10.7531 12.1386 10.1781 12.4552 9.52812 12.6886C8.87813 12.9219 8.18646 13.0386 7.45312 13.0386C5.63646 13.0386 4.09896 12.4094 2.84063 11.1511C1.58229 9.89274 0.953125 8.35524 0.953125 6.53857C0.953125 4.72191 1.58229 3.18441 2.84063 1.92607C4.09896 0.667741 5.63646 0.0385742 7.45312 0.0385742C9.26979 0.0385742 10.8073 0.667741 12.0656 1.92607C13.324 3.18441 13.9531 4.72191 13.9531 6.53857C13.9531 7.27191 13.8365 7.96357 13.6031 8.61357C13.3698 9.26357 13.0531 9.83857 12.6531 10.3386L18.9531 16.6386L17.5531 18.0386ZM7.45312 11.0386C8.70312 11.0386 9.76562 10.6011 10.6406 9.72607C11.5156 8.85107 11.9531 7.78857 11.9531 6.53857C11.9531 5.28857 11.5156 4.22607 10.6406 3.35107C9.76562 2.47607 8.70312 2.03857 7.45312 2.03857C6.20312 2.03857 5.14062 2.47607 4.26562 3.35107C3.39062 4.22607 2.95312 5.28857 2.95312 6.53857C2.95312 7.78857 3.39062 8.85107 4.26562 9.72607C5.14062 10.6011 6.20312 11.0386 7.45312 11.0386Z"
-        fill={color}
+        fill={fill}
       />
+
+      {useOverlay && <rect width="100%" height="100%" fill="rgba(0,0,0,0.1)" rx="4" />}
     </svg>
   );
 };

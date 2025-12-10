@@ -1,26 +1,35 @@
-interface NotificationIconProps {
-  height?: number;
-  width?: number;
-  className?: string;
-  onClick?: () => void;
-}
+import React from 'react';
+import { IconProps } from './type';
 
-const NotificationIcon = ({ height = 20, width = 20, className = '', onClick, ...props }: NotificationIconProps) => {
+const NotificationIcon: React.FC<IconProps> = ({
+  width = 24,
+  height = 24,
+  color = '#000000',
+  fill = color,
+  className,
+  scale = 1,
+  useOverlay = false,
+  viewBox = '0 0 24 24',
+  style,
+  onClick,
+}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width={width}
-      height={height}
-      viewBox="0 0 20 20"
+      width={typeof width === 'number' ? width * scale : width}
+      height={typeof height === 'number' ? height * scale : height}
+      viewBox={viewBox}
+      fill="none"
       className={className}
+      style={style}
       onClick={onClick}
-      {...props}
     >
       <path
-        xmlns="http://www.w3.org/2000/svg"
         d="M1.83398 9.66676C1.83398 8.13899 2.17391 6.73725 2.85378 5.46156C3.53364 4.18586 4.44648 3.12788 5.59232 2.2876L6.6694 3.75426C5.75273 4.42649 5.02322 5.2744 4.48086 6.29801C3.9385 7.32163 3.66732 8.44454 3.66732 9.66676H1.83398ZM18.334 9.66676C18.334 8.44454 18.0628 7.32163 17.5204 6.29801C16.9781 5.2744 16.2486 4.42649 15.3319 3.75426L16.409 2.2876C17.5548 3.12788 18.4677 4.18586 19.1475 5.46156C19.8274 6.73725 20.1673 8.13899 20.1673 9.66676H18.334ZM3.66732 17.9168V16.0834H5.50065V9.66676C5.50065 8.39871 5.8826 7.27197 6.64648 6.28656C7.41037 5.30114 8.40343 4.65565 9.62565 4.3501V3.70843C9.62565 3.32649 9.75933 3.00183 10.0267 2.73447C10.2941 2.46711 10.6187 2.33343 11.0007 2.33343C11.3826 2.33343 11.7072 2.46711 11.9746 2.73447C12.242 3.00183 12.3757 3.32649 12.3757 3.70843V4.3501C13.5979 4.65565 14.5909 5.30114 15.3548 6.28656C16.1187 7.27197 16.5007 8.39871 16.5007 9.66676V16.0834H18.334V17.9168H3.66732ZM11.0007 20.6668C10.4965 20.6668 10.0649 20.4873 9.70586 20.1282C9.34683 19.7692 9.16732 19.3376 9.16732 18.8334H12.834C12.834 19.3376 12.6545 19.7692 12.2954 20.1282C11.9364 20.4873 11.5048 20.6668 11.0007 20.6668ZM7.33398 16.0834H14.6673V9.66676C14.6673 8.65843 14.3083 7.79524 13.5902 7.07718C12.8722 6.35913 12.009 6.0001 11.0007 6.0001C9.99232 6.0001 9.12912 6.35913 8.41107 7.07718C7.69301 7.79524 7.33398 8.65843 7.33398 9.66676V16.0834Z"
-        fill="white"
+        fill={fill}
       />
+
+      {useOverlay && <rect width="100%" height="100%" fill="rgba(0,0,0,0.1)" rx="4" />}
     </svg>
   );
 };

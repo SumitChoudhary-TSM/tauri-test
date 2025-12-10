@@ -16,7 +16,7 @@ const StatsCardList: React.FC<StatsCardListProps> = ({ stats }) => {
       }}
     >
       {stats.map((item, index) => (
-        <StatsCard key={index} label={item.label} value={item.value} icon={item.icon} color={item.color} />
+        <StatsCard key={index} label={item.label} value={item.value} icon={item.icon} bgColor={item.bgColor} />
       ))}
     </Box>
   );

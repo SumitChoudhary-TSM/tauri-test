@@ -8,6 +8,10 @@
   }
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 :root {
   --background: oklch(0.97 0 0);
   --foreground: oklch(0.2 0 0);
@@ -42,6 +46,10 @@
   --sidebar-accent-foreground: oklch(0.2 0 0);
   --sidebar-border: oklch(0.92 0.01 220);
   --sidebar-ring: oklch(0.35 0.15 220);
+  --color-badge-blue: #dbeafe;
+  --color-badge-amber: #fef3c7;
+  --color-badge-emerald: #d1fae5;
+  --color-badge-orange: #ffedd5;
 }
 
 /* .dark {
@@ -81,6 +89,7 @@
 
 @theme {
   --font-sans: 'Geist', 'Geist Fallback';
+  --font-mui: 'Roboto', 'Helvetica', 'Arial', 'sans-serif';
   --font-mono: 'Geist Mono', 'Geist Mono Fallback';
   --color-background: oklch(0.97 0 0);
   --color-foreground: oklch(0.2 0 0);
@@ -119,22 +128,22 @@
   --radius-radius-md: 0.5rem;
   --radius-radius-lg: calc(0.5rem + 4px);
   --radius-radius-xl: calc(0.5rem + 8px);
+  --color-badge-blue: #dbeafe;
+  --color-badge-amber: #fef3c7;
+  --color-badge-emerald: #d1fae5;
+  --color-badge-orange: #ffedd5;
 }
 
 body {
   background-color: var(--color-background);
   color: var(--color-foreground);
-  font-family: var(--font-sans);
 }
 
-/* Override MUI default styles to allow Tailwind utilities */
-.MuiButtonBase-root,
-.MuiInputBase-root,
-.MuiTypography-root {
-  font-family: inherit;
+html body,
+html body * {
+  font-family: var(--font-mui) !important;
 }
 
-/* Ensure Tailwind utilities work on MUI components */
 .MuiButton-root {
   text-transform: inherit;
   box-shadow: none;

@@ -4,6 +4,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 import { SearchBarProps } from './types';
 import { useDebounce } from '@/hooks/useDebounce';
+import { deepmerge } from '@mui/utils';
 
 const SearchBar: React.FC<SearchBarProps> = ({
   value,
@@ -42,7 +43,19 @@ const SearchBar: React.FC<SearchBarProps> = ({
       size={size}
       variant={variant}
       className={className}
-      sx={{ minWidth, ...sx }}
+      sx={deepmerge(
+        {
+          minWidth,
+          backgroundColor: 'var(--color-secondary)',
+
+          '& .MuiOutlinedInput-root': {
+            '&.Mui-focused fieldset': {
+              borderColor: 'var(--color-primary)',
+            },
+          },
+        },
+        sx,
+      )}
       slotProps={{
         input: {
           className: className,

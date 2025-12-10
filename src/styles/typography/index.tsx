@@ -81,9 +81,6 @@ export const Caption = React.forwardRef<HTMLSpanElement, BaseTypographyProps>(
 
 Caption.displayName = 'Caption';
 
-// General typography base style
-const baseFontClass = 'font-pop tracking-wide';
-
 export const H1 = forwardRef<
   HTMLHeadingElement,
   {
@@ -93,7 +90,7 @@ export const H1 = forwardRef<
 >(({ children, className, ...props }, ref) => (
   <h1
     ref={ref}
-    className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold ${baseFontClass} ${className}`}
+    className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold ${className}`}
     {...props}
   >
     {children}
@@ -110,7 +107,7 @@ export const H2 = forwardRef<
 >(({ children, className, ...props }, ref) => (
   <h2
     ref={ref}
-    className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold ${baseFontClass} ${className}`}
+    className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold ${className}`}
     {...props}
   >
     {children}
@@ -127,7 +124,7 @@ export const H3 = forwardRef<
 >(({ children, className, ...props }, ref) => (
   <h3
     ref={ref}
-    className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-semibold ${baseFontClass} ${className}`}
+    className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-semibold ${className}`}
     {...props}
   >
     {children}
@@ -144,7 +141,7 @@ export const H4 = forwardRef<
 >(({ children, className, ...props }, ref) => (
   <h4
     ref={ref}
-    className={`text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-medium ${baseFontClass} ${className}`}
+    className={`text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-medium ${className}`}
     {...props}
   >
     {children}
@@ -159,11 +156,7 @@ export const H5 = forwardRef<
     className?: string;
   } & React.HTMLAttributes<HTMLHeadingElement>
 >(({ children, className, ...props }, ref) => (
-  <h5
-    ref={ref}
-    className={`text-lg sm:text-lg md:text-xl lg:text-2xl xl:text-2xl font-normal ${baseFontClass} ${className}`}
-    {...props}
-  >
+  <h5 ref={ref} className={`text-lg sm:text-lg md:text-xl lg:text-2xl xl:text-2xl font-normal ${className}`} {...props}>
     {children}
   </h5>
 ));
@@ -176,11 +169,7 @@ export const H6 = forwardRef<
     className?: string;
   } & React.HTMLAttributes<HTMLHeadingElement>
 >(({ children, className, ...props }, ref) => (
-  <h6
-    ref={ref}
-    className={`text-md sm:text-md md:text-lg lg:text-lg xl:text-xl font-normal ${baseFontClass} font-semibold ${className}`}
-    {...props}
-  >
+  <h6 ref={ref} className={`text-md sm:text-md md:text-lg lg:text-lg xl:text-xl font-semibold ${className}`} {...props}>
     {children}
   </h6>
 ));
@@ -193,11 +182,7 @@ export const P = forwardRef<
     className?: string;
   } & React.HTMLAttributes<HTMLParagraphElement>
 >(({ children, className, ...props }, ref) => (
-  <p
-    ref={ref}
-    className={`text-sm sm:text-md md:text-lg xl:text-lg ${baseFontClass} md:leading-6 ${className}`}
-    {...props}
-  >
+  <p ref={ref} className={`text-sm sm:text-md md:text-lg xl:text-lg md:leading-6 ${className}`} {...props}>
     {children}
   </p>
 ));
@@ -210,11 +195,7 @@ export const Span = forwardRef<
     className?: string;
   } & React.HTMLAttributes<HTMLSpanElement>
 >(({ children, className, ...props }, ref) => (
-  <span
-    ref={ref}
-    className={`text-sm sm:text-base md:text-lg lg:text-xl xl:text-xl ${baseFontClass} ${className}`}
-    {...props}
-  >
+  <span ref={ref} className={`text-sm sm:text-base md:text-lg lg:text-xl xl:text-xl ${className}`} {...props}>
     {children}
   </span>
 ));
@@ -229,7 +210,7 @@ export const P2 = forwardRef<
 >(({ children, className, ...props }, ref) => (
   <p
     ref={ref}
-    className={`text-sm sm:text-base md:text-base xl:text-lg font-normal ${baseFontClass} text-black md:leading-6 ${className}`}
+    className={`text-sm sm:text-base md:text-base xl:text-lg font-normal text-black md:leading-6 ${className}`}
     {...props}
   >
     {children}

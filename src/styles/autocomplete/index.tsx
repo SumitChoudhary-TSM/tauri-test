@@ -78,7 +78,7 @@ const AutocompleteField: React.FC<AutocompleteFieldProps> = ({
                 />
               )}
               renderValue={(selected: Option | Option[]) =>
-                Array.isArray(selected) ? renderChips(selected) : selected?.label ?? ''
+                Array.isArray(selected) ? renderChips(selected) : (selected?.label ?? '')
               }
               fullWidth
             />
@@ -116,9 +116,9 @@ const AutocompleteField: React.FC<AutocompleteFieldProps> = ({
             }}
           />
         )}
-        renderValue={(selected : Option | Option[]) => (
-          Array.isArray(selected) ? renderChips(selected) : selected?.label ?? ''
-        )}
+        renderValue={(selected: Option | Option[]) =>
+          Array.isArray(selected) ? renderChips(selected) : (selected?.label ?? '')
+        }
         fullWidth
       />
 
