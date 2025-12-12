@@ -9,7 +9,6 @@ import ArrowRightIcon from '@/styles/icons/ArrowRightIcon';
 import { stats } from '@/constants/mock-data';
 
 export default function MarksDashboard() {
-
   return (
     <div className="p-2 space-y-6">
       <div className="flex items-center justify-between">
