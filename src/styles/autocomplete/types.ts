@@ -1,5 +1,5 @@
 import { SxProps } from '@mui/material';
-import { Control, FieldValues } from 'react-hook-form';
+import { Control, FieldValues, Path } from 'react-hook-form';
 
 export interface Option {
   label: string;
@@ -12,7 +12,7 @@ export interface AutocompleteFieldProps<TFormValues extends FieldValues = Record
   value?: Option | Option[] | null;
   multiple?: boolean;
   onChange?: (value: Option | Option[] | null) => void;
-  name?: keyof TFormValues;
+  name?: Path<TFormValues>;
   errorText?: string;
   required?: boolean;
   control?: Control<TFormValues>;

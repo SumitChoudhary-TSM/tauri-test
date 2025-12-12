@@ -2,6 +2,7 @@ import React from 'react';
 import { Autocomplete, TextField, Chip, Box, FormHelperText, FormControl } from '@mui/material';
 import { Controller, useFormContext } from 'react-hook-form';
 import { AutocompleteFieldProps, Option } from './types';
+import { cn } from '@/utils/cn';
 
 const AutocompleteField: React.FC<AutocompleteFieldProps> = ({
   placeholder,
@@ -36,6 +37,7 @@ const AutocompleteField: React.FC<AutocompleteFieldProps> = ({
       ))}
     </Box>
   );
+  const renderSingleValue = (selected: Option) => <Box sx={{ px: 1 }}>{selected?.label ?? ''}</Box>;
 
   const renderHelper = (msg?: string) =>
     msg ? (
@@ -57,14 +59,30 @@ const AutocompleteField: React.FC<AutocompleteFieldProps> = ({
               multiple={multiple}
               options={options}
               className={autocompleteClassName}
-              sx={autocompleteSx}
+              slotProps={{
+                paper: {
+                  className: 'rounded-xl!',
+                },
+                popper: {
+                  className: 'rounded-xl!',
+                },
+                listbox: {
+                  className: 'p-2 [&>li]:rounded-xl! [&>li]:my-1',
+                },
+              }}
+              sx={{
+                '& .MuiOutlinedInput-root': {
+                  borderRadius: '0.75rem',
+                  overflow: 'hidden',
+                },
+                ...autocompleteSx,
+              }}
               value={field.value || (multiple ? [] : null)}
               onChange={(_, val) => field.onChange(val)}
               getOptionLabel={(opt) => opt?.label ?? ''}
               renderInput={(params) => (
                 <TextField
                   {...params}
-                  className={textFieldClassName}
                   sx={textFieldSx}
                   placeholder={hasValue(field.value) ? undefined : placeholder}
                   error={!!error}
@@ -75,10 +93,16 @@ const AutocompleteField: React.FC<AutocompleteFieldProps> = ({
                       shrink: false,
                     },
                   }}
+                  className={cn(
+                    'rounded-xl! bg-background text-foreground border-border',
+                    '[&_input::placeholder]:text-muted-foreground',
+                    'transition-all',
+                    textFieldClassName,
+                  )}
                 />
               )}
               renderValue={(selected: Option | Option[]) =>
-                Array.isArray(selected) ? renderChips(selected) : (selected?.label ?? '')
+                Array.isArray(selected) ? renderChips(selected) : (renderSingleValue(selected) ?? '')
               }
               fullWidth
             />
@@ -96,14 +120,30 @@ const AutocompleteField: React.FC<AutocompleteFieldProps> = ({
         multiple={multiple}
         options={options}
         className={autocompleteClassName}
-        sx={autocompleteSx}
+        slotProps={{
+          paper: {
+            className: 'rounded-xl!',
+          },
+          popper: {
+            className: 'rounded-xl!',
+          },
+          listbox: {
+            className: 'p-2 [&>li]:rounded-xl! [&>li]:my-1',
+          },
+        }}
+        sx={{
+          '& .MuiOutlinedInput-root': {
+            borderRadius: '0.75rem',
+            overflow: 'hidden',
+          },
+          ...autocompleteSx,
+        }}
         value={value || (multiple ? [] : null)}
         onChange={(_, val) => onChange?.(val)}
         getOptionLabel={(opt) => opt?.label ?? ''}
         renderInput={(params) => (
           <TextField
             {...params}
-            className={textFieldClassName}
             sx={textFieldSx}
             placeholder={hasValue(value) ? undefined : placeholder}
             error={!!errorText}
@@ -114,10 +154,16 @@ const AutocompleteField: React.FC<AutocompleteFieldProps> = ({
                 shrink: false,
               },
             }}
+            className={cn(
+              'rounded-xl! bg-background text-foreground border-border',
+              '[&_input::placeholder]:text-muted-foreground',
+              'transition-all',
+              textFieldClassName,
+            )}
           />
         )}
         renderValue={(selected: Option | Option[]) =>
-          Array.isArray(selected) ? renderChips(selected) : (selected?.label ?? '')
+          Array.isArray(selected) ? renderChips(selected) : (renderSingleValue(selected) ?? '')
         }
         fullWidth
       />

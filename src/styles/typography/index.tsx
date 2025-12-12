@@ -55,8 +55,12 @@ export const Description = React.forwardRef<HTMLParagraphElement, BaseTypography
 Description.displayName = 'Description';
 
 // Label
-export const Label = React.forwardRef<HTMLParagraphElement, BaseTypographyProps>(
-  ({ className, children, ...props }, ref) => (
+interface LabelProps extends BaseTypographyProps {
+  required?: boolean;
+}
+
+export const Label = React.forwardRef<HTMLParagraphElement, LabelProps>(
+  ({ className, children, required = false, ...props }, ref) => (
     <Typography
       {...props}
       ref={ref}
@@ -64,6 +68,7 @@ export const Label = React.forwardRef<HTMLParagraphElement, BaseTypographyProps>
       variant="subtitle2"
     >
       {children}
+      {required ? <span className="text-red-500 ml-1">*</span> : null}
     </Typography>
   ),
 );

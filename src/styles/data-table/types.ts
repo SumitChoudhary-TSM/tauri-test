@@ -1,7 +1,7 @@
 import { SxProps, Theme } from '@mui/material';
-import { GridColDef, GridPaginationModel } from '@mui/x-data-grid';
+import { DataGridProps, GridColDef, GridPaginationModel } from '@mui/x-data-grid';
 
-export interface DataTableProps {
+export interface DataTableProps extends DataGridProps {
   title?: string;
   description?: string;
   columns: GridColDef[];

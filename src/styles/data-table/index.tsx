@@ -2,7 +2,7 @@ import React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import type { GridSlotsComponentsProps } from '@mui/x-data-grid';
 import { Box, Stack, type SxProps, type Theme } from '@mui/material';
-import { Description, Subheading } from '../typography';
+import { Description, Subheading } from '@/styles/typography';
 import { deepmerge } from '@mui/utils';
 import { DataTableProps } from './types';
 
@@ -22,6 +22,7 @@ const DataTable: React.FC<DataTableProps> = ({
   hideColumnHeaders = false,
   className,
   sx,
+  ...props
 }) => {
   const hasTitleBlock = Boolean(title || description);
   const hasActions = Boolean(actions);
@@ -47,6 +48,18 @@ const DataTable: React.FC<DataTableProps> = ({
       zIndex: 1,
       backgroundColor: 'background.paper',
       display: hidePagination ? 'none' : 'flex',
+    },
+    '& .MuiDataGrid-cell:focus': {
+      outline: 'none',
+    },
+    '& .MuiDataGrid-cell:focus-within': {
+      outline: 'none',
+    },
+    '& .MuiDataGrid-columnHeader:focus': {
+      outline: 'none',
+    },
+    '& .MuiDataGrid-columnHeader:focus-within': {
+      outline: 'none',
     },
   };
 
@@ -107,6 +120,7 @@ const DataTable: React.FC<DataTableProps> = ({
           }}
         >
           <DataGrid
+            {...props}
             columns={columns}
             rows={rows}
             rowCount={rowCount}
@@ -117,6 +131,8 @@ const DataTable: React.FC<DataTableProps> = ({
             pageSizeOptions={[5, 10, 25, 50]}
             hideFooter={hidePagination}
             disableRowSelectionOnClick
+            checkboxSelection={false}
+            isRowSelectable={() => false}
             sx={deepmerge(defaultSx, sx)}
             slotProps={
               {
