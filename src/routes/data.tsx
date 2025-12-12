@@ -1,4 +1,5 @@
 import Dashboard from '@/components/dashboard';
+import UserPage from '@/components/user';
 import { ReactElement } from 'react';
 
 export interface RouteType {
@@ -15,5 +16,10 @@ export const routes: RouteType[] = [
     name: 'Home',
     path: '/',
     element: <Dashboard />,
+  },
+  {
+    name: 'User',
+    path: '/user',
+    element: <UserPage />,
   },
 ];

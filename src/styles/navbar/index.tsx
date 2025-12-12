@@ -3,13 +3,10 @@ import UsersIcon from '@/styles/icons/UsersIcon';
 import { Description, Label } from '@/styles/typography';
 import { TopNavProps } from './types';
 import { UserRoleOptions } from '@/constants/options';
-import SearchBar from '@/styles/search-bar';
-import { useState } from 'react';
 import CustomIconButton from '@/styles/icon-button';
 import { IconButton } from '@mui/material';
 
 export function TopNav({ role = UserRoleOptions.MARKS_PRINT_ADMIN }: TopNavProps) {
-  const [search, setSearch] = useState('');
   const roleLabels: Record<string, string> = {
     marks_print_admin: 'Marks Print Team',
     vendor: 'Vendor Portal',
@@ -18,11 +15,7 @@ export function TopNav({ role = UserRoleOptions.MARKS_PRINT_ADMIN }: TopNavProps
 
   return (
     <header className="border-b border-border/40 bg-card pl-16 lg:pl-0">
-      <div className="flex items-center justify-end sm:justify-between h-16 px-6">
-        <div className="hidden sm:flex flex-1 max-w-md">
-          <SearchBar value={search} onSearch={(val) => setSearch(val)} onChange={() => {}} className="rounded-xl" />
-        </div>
-
+      <div className="flex items-center justify-end  h-16 px-6">
         <div className="flex items-center gap-4">
           <IconButton className="relative rounded-full flex items-center justify-center">
             <NotificationIcon color="var(--color-foreground)" />

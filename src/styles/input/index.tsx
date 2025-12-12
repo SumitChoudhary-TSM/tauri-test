@@ -3,6 +3,7 @@ import { FormControl, OutlinedInput, FormHelperText } from '@mui/material';
 import type { FormControlProps } from '@mui/material/FormControl';
 import type { OutlinedInputProps } from '@mui/material/OutlinedInput';
 import { cn } from '@/utils/cn';
+import { FieldError, FieldErrorsImpl, FieldValues, Merge } from 'react-hook-form';
 
 interface InputControlProps {
   onChange?: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
@@ -14,7 +15,7 @@ interface InputControlProps {
 interface CustomInputProps extends FormControlProps {
   label?: string;
   placeholder?: string;
-  errorText?: string;
+  errorText?: string | FieldError | Merge<FieldError, FieldErrorsImpl<FieldValues>> | undefined;
   inputProps?: OutlinedInputProps;
   type: 'text' | 'password' | 'email' | 'number' | 'tel' | 'url';
   className?: string;
@@ -31,7 +32,22 @@ const CustomInput = React.forwardRef<HTMLInputElement, CustomInputProps>(
     } = props as InputControlProps & FormControlProps;
     void _ignoredRef;
 
-    const isError = !!errorText;
+    const getErrorMessage = (): string | undefined => {
+      if (!errorText) return undefined;
+
+      if (typeof errorText === 'string') {
+        return errorText;
+      }
+
+      if (typeof errorText === 'object' && errorText !== null && 'message' in errorText) {
+        return errorText.message as string;
+      }
+
+      return String(errorText);
+    };
+
+    const errorMessage = getErrorMessage();
+    const isError = !!errorMessage;
 
     return (
       <FormControl
@@ -50,14 +66,14 @@ const CustomInput = React.forwardRef<HTMLInputElement, CustomInputProps>(
           onChange={onChange}
           onBlur={onBlur}
           className={cn(
-            '!rounded-md !bg-background !text-foreground !border-border',
-            '[&_input::placeholder]:!text-muted-foreground',
-            '!transition-all',
+            'rounded-xl! bg-background! text-foreground! border-border!',
+            '[&_input::placeholder]:text-muted-foreground!',
+            'transition-all!',
             inputProps?.className,
           )}
         />
 
-        {isError && <FormHelperText>{errorText}</FormHelperText>}
+        {isError ? <FormHelperText>{errorMessage}</FormHelperText> : ''}
       </FormControl>
     );
   },
